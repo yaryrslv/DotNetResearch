@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>Benchmark-20230425-170847</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet=v0.13.5, OS=Windows 10 (10.0.19045.2846/22H2/2022Update)
+11th Gen Intel Core i5-11400 2.60GHz, 1 CPU, 12 logical and 6 physical cores
+.NET SDK=6.0.407
+  [Host]     : .NET 6.0.15 (6.0.1523.11507), X64 RyuJIT AVX2
+  DefaultJob : .NET 6.0.15 (6.0.1523.11507), X64 RyuJIT AVX2
+</code></pre>
+<pre><code></code></pre>
+
+<table>
+<thead><tr><th>                       Method</th><th> Mean</th><th>Error</th><th>StdDev</th><th>Median</th><th>Gen0</th><th>Gen1</th><th>Gen2</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>SmallStructWithSpan</td><td>107.2 &mu;s</td><td>2.12 &mu;s</td><td>3.71 &mu;s</td><td>105.8 &mu;s</td><td>249.8779</td><td>249.8779</td><td>249.8779</td><td>781.36 KB</td>
+</tr><tr><td>MediumStructWithSpan</td><td>1,011.1 &mu;s</td><td>20.21 &mu;s</td><td>49.95 &mu;s</td><td>1,011.1 &mu;s</td><td>33.2031</td><td>33.2031</td><td>33.2031</td><td>2343.78 KB</td>
+</tr><tr><td>LargeStructWithSpan</td><td>1,599.6 &mu;s</td><td>31.14 &mu;s</td><td>30.58 &mu;s</td><td>1,597.4 &mu;s</td><td>37.1094</td><td>37.1094</td><td>37.1094</td><td>3906.28 KB</td>
+</tr><tr><td>VeryLargeStructsWithSpan</td><td>5,313.6 &mu;s</td><td>103.75 &mu;s</td><td>158.44 &mu;s</td><td>5,335.7 &mu;s</td><td>117.1875</td><td>117.1875</td><td>117.1875</td><td>8593.82 KB</td>
+</tr><tr><td>SmallRecordStructWithSpan</td><td>111.9 &mu;s</td><td>1.53 &mu;s</td><td>1.44 &mu;s</td><td>111.7 &mu;s</td><td>249.8779</td><td>249.8779</td><td>249.8779</td><td>781.36 KB</td>
+</tr><tr><td>MediumRecordStructWithSpan</td><td>1,032.0 &mu;s</td><td>20.05 &mu;s</td><td>55.89 &mu;s</td><td>1,024.9 &mu;s</td><td>35.1563</td><td>35.1563</td><td>35.1563</td><td>2343.78 KB</td>
+</tr><tr><td>LargeRecordStructWithSpan</td><td>1,647.7 &mu;s</td><td>32.95 &mu;s</td><td>70.21 &mu;s</td><td>1,631.4 &mu;s</td><td>35.1563</td><td>35.1563</td><td>35.1563</td><td>3906.28 KB</td>
+</tr><tr><td>VeryLargeRecordStructsWithSpan</td><td>5,298.4 &mu;s</td><td>105.76 &mu;s</td><td>182.43 &mu;s</td><td>5,289.7 &mu;s</td><td>132.8125</td><td>132.8125</td><td>132.8125</td><td>8593.82 KB</td>
+</tr><tr><td>SmallClassWithSpan</td><td>2,098.5 &mu;s</td><td>39.23 &mu;s</td><td>45.17 &mu;s</td><td>2,096.6 &mu;s</td><td>496.0938</td><td>246.0938</td><td>246.0938</td><td>3125.11 KB</td>
+</tr><tr><td>MediumClassWithSpan</td><td>8,204.7 &mu;s</td><td>447.52 &mu;s</td><td>1,305.45 &mu;s</td><td>7,666.9 &mu;s</td><td>835.9375</td><td>421.8750</td><td>210.9375</td><td>4687.6 KB</td>
+</tr><tr><td>LargeClassWithSpan</td><td>9,025.4 &mu;s</td><td>176.25 &mu;s</td><td>429.01 &mu;s</td><td>8,990.4 &mu;s</td><td>1078.1250</td><td>500.0000</td><td>218.7500</td><td>6250.11 KB</td>
+</tr><tr><td>VeryLargeClassWithSpan</td><td>15,784.8 &mu;s</td><td>242.72 &mu;s</td><td>202.68 &mu;s</td><td>15,761.9 &mu;s</td><td>1937.5000</td><td>843.7500</td><td>281.2500</td><td>10937.87 KB</td>
+</tr><tr><td>SmallRecordClassWithSpan</td><td>2,137.9 &mu;s</td><td>42.53 &mu;s</td><td>115.70 &mu;s</td><td>2,135.2 &mu;s</td><td>496.0938</td><td>246.0938</td><td>246.0938</td><td>3125.11 KB</td>
+</tr><tr><td>MediumRecordClassWithSpan</td><td>6,706.8 &mu;s</td><td>124.84 &mu;s</td><td>257.82 &mu;s</td><td>6,740.0 &mu;s</td><td>812.5000</td><td>406.2500</td><td>203.1250</td><td>4687.6 KB</td>
+</tr><tr><td>LargeRecordClassWithSpan</td><td>9,125.8 &mu;s</td><td>176.37 &mu;s</td><td>247.25 &mu;s</td><td>9,209.7 &mu;s</td><td>1078.1250</td><td>500.0000</td><td>218.7500</td><td>6250.11 KB</td>
+</tr><tr><td>VeryLargeRecordClassWithSpan</td><td>15,773.3 &mu;s</td><td>89.05 &mu;s</td><td>74.36 &mu;s</td><td>15,760.2 &mu;s</td><td>1937.5000</td><td>843.7500</td><td>281.2500</td><td>10937.86 KB</td>
+</tr></tbody></table>
+</body>
+</html>

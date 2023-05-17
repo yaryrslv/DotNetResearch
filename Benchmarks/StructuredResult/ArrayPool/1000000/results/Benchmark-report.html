@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>Benchmark-20230421-104124</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet=v0.13.5, OS=Windows 10 (10.0.19045.2846/22H2/2022Update)
+11th Gen Intel Core i5-11400 2.60GHz, 1 CPU, 12 logical and 6 physical cores
+.NET SDK=6.0.407
+  [Host]     : .NET 6.0.15 (6.0.1523.11507), X64 RyuJIT AVX2
+  DefaultJob : .NET 6.0.15 (6.0.1523.11507), X64 RyuJIT AVX2
+</code></pre>
+<pre><code></code></pre>
+
+<table>
+<thead><tr><th>                       Method</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Gen0</th><th>Gen1</th><th>Gen2</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>SmallStructWithArrayPool</td><td>1.743 ms</td><td>0.0731 ms</td><td>0.2133 ms</td><td>421.8750</td><td>421.8750</td><td>421.8750</td><td>8 MB</td>
+</tr><tr><td>MediumStructWithArrayPool</td><td>11.290 ms</td><td>0.2709 ms</td><td>0.7987 ms</td><td>406.2500</td><td>406.2500</td><td>406.2500</td><td>24 MB</td>
+</tr><tr><td>LargeStructWithArrayPool</td><td>16.896 ms</td><td>0.1829 ms</td><td>0.1622 ms</td><td>968.7500</td><td>968.7500</td><td>968.7500</td><td>40 MB</td>
+</tr><tr><td>VeryLargeStructsWithArrayPool</td><td>49.877 ms</td><td>0.6743 ms</td><td>0.5978 ms</td><td>909.0909</td><td>909.0909</td><td>909.0909</td><td>88 MB</td>
+</tr><tr><td>SmallRecordStructWithArrayPool</td><td>1.640 ms</td><td>0.0562 ms</td><td>0.1621 ms</td><td>445.3125</td><td>445.3125</td><td>445.3125</td><td>8 MB</td>
+</tr><tr><td>MediumRecordStructWithArrayPool</td><td>11.308 ms</td><td>0.2903 ms</td><td>0.8514 ms</td><td>375.0000</td><td>375.0000</td><td>375.0000</td><td>24 MB</td>
+</tr><tr><td>LargeRecordStructWithArrayPool</td><td>16.900 ms</td><td>0.1855 ms</td><td>0.1735 ms</td><td>968.7500</td><td>968.7500</td><td>968.7500</td><td>40 MB</td>
+</tr><tr><td>VeryLargeRecordStructsWithArrayPool</td><td>48.743 ms</td><td>0.5356 ms</td><td>0.5010 ms</td><td>909.0909</td><td>909.0909</td><td>909.0909</td><td>88 MB</td>
+</tr><tr><td>SmallClassWithArrayPool</td><td>42.355 ms</td><td>0.2471 ms</td><td>0.2190 ms</td><td>4538.4615</td><td>2230.7692</td><td>1000.0000</td><td>30.89 MB</td>
+</tr><tr><td>MediumClassWithArrayPool</td><td>57.325 ms</td><td>0.8320 ms</td><td>0.7783 ms</td><td>7100.0000</td><td>2900.0000</td><td>1000.0000</td><td>46.15 MB</td>
+</tr><tr><td>LargeClassWithArrayPool</td><td>89.372 ms</td><td>1.4184 ms</td><td>1.3268 ms</td><td>10000.0000</td><td>4166.6667</td><td>1500.0000</td><td>61.41 MB</td>
+</tr><tr><td>VeryLargeClassWithArrayPool</td><td>135.181 ms</td><td>2.5678 ms</td><td>2.2763 ms</td><td>18250.0000</td><td>7500.0000</td><td>2250.0000</td><td>107.19 MB</td>
+</tr><tr><td>SmallRecordClassWithArrayPool</td><td>42.163 ms</td><td>0.2105 ms</td><td>0.1758 ms</td><td>4538.4615</td><td>2230.7692</td><td>1000.0000</td><td>30.89 MB</td>
+</tr><tr><td>MediumRecordClassWithArrayPool</td><td>56.859 ms</td><td>1.0821 ms</td><td>1.2461 ms</td><td>7111.1111</td><td>2888.8889</td><td>1000.0000</td><td>46.15 MB</td>
+</tr><tr><td>LargeRecordClassWithArrayPool</td><td>89.889 ms</td><td>1.7007 ms</td><td>1.6703 ms</td><td>10000.0000</td><td>4166.6667</td><td>1500.0000</td><td>61.41 MB</td>
+</tr><tr><td>VeryLargeRecordClassWithArrayPool</td><td>136.307 ms</td><td>2.5967 ms</td><td>3.0912 ms</td><td>18250.0000</td><td>7250.0000</td><td>2250.0000</td><td>107.18 MB</td>
+</tr></tbody></table>
+</body>
+</html>

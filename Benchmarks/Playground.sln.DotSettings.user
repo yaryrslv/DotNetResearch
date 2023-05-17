@@ -1,0 +1,8 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=a68202cd_002D4e43_002D4e97_002D98c5_002D48c42c82107b/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="DeadlockTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::7FFBFDB2-75B0-4944-B0A0-888927301FBC::net6.0::Test.DeadlockTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::7FFBFDB2-75B0-4944-B0A0-888927301FBC::net6.0::Test.LivelockTest.TestLivelock&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::7FFBFDB2-75B0-4944-B0A0-888927301FBC::net6.0::Test.StarvationTest&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
