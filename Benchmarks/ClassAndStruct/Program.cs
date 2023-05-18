@@ -3,6 +3,8 @@
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Columns;
 using BenchmarkDotNet.Configs;
+using BenchmarkDotNet.Exporters;
+using BenchmarkDotNet.Exporters.Csv;
 using BenchmarkDotNet.Loggers;
 using BenchmarkDotNet.Running;
 using BenchmarkDotNet.Validators;
@@ -12,7 +14,8 @@ var config = new ManualConfig()
     .WithOptions(ConfigOptions.DisableOptimizationsValidator)
     .AddValidator(JitOptimizationsValidator.DontFailOnError)
     .AddLogger(ConsoleLogger.Default)
-    .AddColumnProvider(DefaultColumnProviders.Instance);
+    .AddColumnProvider(DefaultColumnProviders.Instance)
+    .AddExporter(RPlotExporter.Default, CsvExporter.Default, MarkdownExporter.GitHub, HtmlExporter.Default);
 
 BenchmarkRunner.Run<Benchmark>(config);
 
@@ -23,7 +26,7 @@ public class Benchmark
     private const int A = 4444;
     private const int B = 8888;
 
-    private const int Count = 1000;
+    private const int Count = 100;
 
     #region Struct
     [Benchmark]
