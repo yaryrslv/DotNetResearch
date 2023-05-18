@@ -6,5 +6,5 @@ build_property.ProjectTypeGuids =
 build_property.InvariantGlobalization = 
 build_property.PlatformNeutralAssembly = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
-build_property.RootNamespace = Data
-build_property.ProjectDir = C:\Users\Admin\Desktop\DotNetResearch\Benchmarks\Data\
+build_property.RootNamespace = ArrayPool
+build_property.ProjectDir = C:\Users\Admin\Desktop\DotNetResearch\Benchmarks\ArrayPool\

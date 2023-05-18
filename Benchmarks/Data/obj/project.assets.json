@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Admin\\Desktop\\Benchmarks\\Data\\Data.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\Desktop\\DotNetResearch\\Benchmarks\\Data\\Data.csproj",
       "projectName": "Data",
-      "projectPath": "C:\\Users\\Admin\\Desktop\\Benchmarks\\Data\\Data.csproj",
+      "projectPath": "C:\\Users\\Admin\\Desktop\\DotNetResearch\\Benchmarks\\Data\\Data.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Admin\\Desktop\\Benchmarks\\Data\\obj\\",
+      "outputPath": "C:\\Users\\Admin\\Desktop\\DotNetResearch\\Benchmarks\\Data\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
