@@ -34,21 +34,12 @@ public class Benchmark
     private readonly ArrayPool<MediumStruct> _mediumStructArrayPool = ArrayPool<MediumStruct>.Shared;
     private readonly ArrayPool<LargeStruct> _largeStructArrayPool = ArrayPool<LargeStruct>.Shared;
     private readonly ArrayPool<VeryLargeStruct> _veryLargeStructArrayPool = ArrayPool<VeryLargeStruct>.Shared;
-    
-    private readonly ArrayPool<SmallRecordStruct> _smallRecordStructArrayPool = ArrayPool<SmallRecordStruct>.Shared;
-    private readonly ArrayPool<MediumRecordStruct> _mediumRecordStructArrayPool = ArrayPool<MediumRecordStruct>.Shared;
-    private readonly ArrayPool<LargeRecordStruct> _largeRecordStructArrayPool = ArrayPool<LargeRecordStruct>.Shared;
-    private readonly ArrayPool<VeryLargeRecordStruct> _veryLargeRecordStructArrayPool = ArrayPool<VeryLargeRecordStruct>.Shared;
-    
+
     private readonly ArrayPool<SmallClass> _smallClassArrayPool = ArrayPool<SmallClass>.Shared;
     private readonly ArrayPool<MediumClass> _mediumClassArrayPool = ArrayPool<MediumClass>.Shared;
     private readonly ArrayPool<LargeClass> _largeClassArrayPool = ArrayPool<LargeClass>.Shared;
     private readonly ArrayPool<VeryLargeClass> _veryLargeClassArrayPool = ArrayPool<VeryLargeClass>.Shared;
     
-    private readonly ArrayPool<SmallRecordClass> _smallRecordClassArrayPool = ArrayPool<SmallRecordClass>.Shared;
-    private readonly ArrayPool<MediumRecordClass> _mediumRecordClassArrayPool = ArrayPool<MediumRecordClass>.Shared;
-    private readonly ArrayPool<LargeRecordClass> _largeRecordClassArrayPool = ArrayPool<LargeRecordClass>.Shared;
-    private readonly ArrayPool<VeryLargeRecordClass> _veryLargeRecordClassArrayPool = ArrayPool<VeryLargeRecordClass>.Shared;
     #endregion
 
     #region Struct
@@ -98,60 +89,6 @@ public class Benchmark
         for (int i = 0; i < Count; i++)
         {
             VeryLargeStruct test = new(A, B, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString);
-            rentArray[i] = test;
-        }
-        
-        return rentArray;
-    }
-    #endregion
-
-    #region RecordStruct
-    [Benchmark]
-    public SmallRecordStruct[] SmallRecordStructWithArrayPool()
-    {
-        var rentArray = _smallRecordStructArrayPool.Rent(Count);
-        for (int i = 0; i < Count; i++)
-        {
-            SmallRecordStruct test = new(A, B);
-            rentArray[i] = test;
-        }
-        
-        return rentArray;
-    }
-
-    [Benchmark]
-    public MediumRecordStruct[] MediumRecordStructWithArrayPool()
-    {
-        var rentArray = _mediumRecordStructArrayPool.Rent(Count);
-        for (int i = 0; i < Count; i++)
-        {
-            MediumRecordStruct test = new(A, B, _sampleString, _sampleString);
-            rentArray[i] = test;
-        }
-        
-        return rentArray;
-    }
-    
-    [Benchmark]
-    public LargeRecordStruct[] LargeRecordStructWithArrayPool()
-    {
-        var rentArray = _largeRecordStructArrayPool.Rent(Count);
-        for (int i = 0; i < Count; i++)
-        {
-            LargeRecordStruct test = new(A, B, _sampleString, _sampleString, _sampleString, _sampleString);
-            rentArray[i] = test;
-        }
-        
-        return rentArray;
-    }
-    
-    [Benchmark]
-    public VeryLargeRecordStruct[] VeryLargeRecordStructsWithArrayPool()
-    {
-        var rentArray = _veryLargeRecordStructArrayPool.Rent(Count);
-        for (int i = 0; i < Count; i++)
-        {
-            VeryLargeRecordStruct test = new(A, B, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString);
             rentArray[i] = test;
         }
         
@@ -209,60 +146,6 @@ public class Benchmark
             rentArray[i] = test;
         }
         
-        return rentArray;
-    }
-    #endregion
-    
-    #region RecordClass
-    [Benchmark]
-    public SmallRecordClass[] SmallRecordClassWithArrayPool()
-    {
-        var rentArray = _smallRecordClassArrayPool.Rent(Count);
-        for (int i = 0; i < Count; i++)
-        {
-            SmallRecordClass test = new(A, B);
-            rentArray[i] = test;
-        }
-        
-        return rentArray;
-    }
-
-    [Benchmark]
-    public MediumRecordClass[] MediumRecordClassWithArrayPool()
-    {
-        var rentArray = _mediumRecordClassArrayPool.Rent(Count);
-        for (int i = 0; i < Count; i++)
-        {
-            MediumRecordClass test = new(A, B, _sampleString, _sampleString);
-            rentArray[i] = test;
-        }
-        
-        return rentArray;
-    }
-    
-    [Benchmark]
-    public LargeRecordClass[] LargeRecordClassWithArrayPool()
-    {
-        var rentArray = _largeRecordClassArrayPool.Rent(Count);
-        for (int i = 0; i < Count; i++)
-        {
-            LargeRecordClass test = new(A, B, _sampleString, _sampleString, _sampleString, _sampleString);
-            rentArray[i] = test;
-        }
-        
-        return rentArray;
-    }
-    
-    [Benchmark]
-    public VeryLargeRecordClass[] VeryLargeRecordClassWithArrayPool()
-    {
-        var rentArray = _veryLargeRecordClassArrayPool.Rent(Count);
-        for (int i = 0; i < Count; i++)
-        {
-            VeryLargeRecordClass test = new(A, B, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString);
-            rentArray[i] = test;
-        }
-
         return rentArray;
     }
     #endregion

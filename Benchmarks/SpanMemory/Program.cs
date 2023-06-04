@@ -82,60 +82,6 @@ public class Benchmark
     }
     #endregion
 
-    #region RecordStruct
-    [Benchmark]
-    public Span<SmallRecordStruct> SmallRecordStructWithSpan()
-    {
-        Span<SmallRecordStruct> span = new SmallRecordStruct[Count];
-        for (int i = 0; i < Count; i++)
-        {
-            SmallRecordStruct test = new(A, B);
-            span[i] = test;
-        }
-        
-        return span;
-    }
-
-    [Benchmark]
-    public Span<MediumRecordStruct> MediumRecordStructWithSpan()
-    {
-        Span<MediumRecordStruct> span = new MediumRecordStruct[Count];
-        for (int i = 0; i < Count; i++)
-        {
-            MediumRecordStruct test = new(A, B, _sampleString, _sampleString);
-            span[i] = test;
-        }
-        
-        return span;
-    }
-    
-    [Benchmark]
-    public Span<LargeRecordStruct> LargeRecordStructWithSpan()
-    {
-        Span<LargeRecordStruct> span = new LargeRecordStruct[Count];
-        for (int i = 0; i < Count; i++)
-        {
-            LargeRecordStruct test = new(A, B, _sampleString, _sampleString, _sampleString, _sampleString);
-            span[i] = test;
-        }
-        
-        return span;
-    }
-    
-    [Benchmark]
-    public Span<VeryLargeRecordStruct> VeryLargeRecordStructsWithSpan()
-    {
-        Span<VeryLargeRecordStruct> span = new VeryLargeRecordStruct[Count];
-        for (int i = 0; i < Count; i++)
-        {
-            VeryLargeRecordStruct test = new(A, B, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString);
-            span[i] = test;
-        }
-        
-        return span;
-    }
-    #endregion
-
     #region Class
     [Benchmark]
     public Span<SmallClass> SmallClassWithSpan()
@@ -183,60 +129,6 @@ public class Benchmark
         for (int i = 0; i < Count; i++)
         {
             VeryLargeClass test = new(A, B, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString);
-            span[i] = test;
-        }
-        
-        return span;
-    }
-    #endregion
-    
-    #region RecordClass
-    [Benchmark]
-    public Span<SmallRecordClass> SmallRecordClassWithSpan()
-    {
-        Span<SmallRecordClass> span = new SmallRecordClass[Count];
-        for (int i = 0; i < Count; i++)
-        {
-            SmallRecordClass test = new(A, B);
-            span[i] = test;
-        }
-        
-        return span;
-    }
-
-    [Benchmark]
-    public Span<MediumRecordClass> MediumRecordClassWithSpan()
-    {
-        Span<MediumRecordClass> span = new MediumRecordClass[Count];
-        for (int i = 0; i < Count; i++)
-        {
-            MediumRecordClass test = new(A, B, _sampleString, _sampleString);
-            span[i] = test;
-        }
-        
-        return span;
-    }
-    
-    [Benchmark]
-    public Span<LargeRecordClass> LargeRecordClassWithSpan()
-    {
-        Span<LargeRecordClass> span = new LargeRecordClass[Count];
-        for (int i = 0; i < Count; i++)
-        {
-            LargeRecordClass test = new(A, B, _sampleString, _sampleString, _sampleString, _sampleString);
-            span[i] = test;
-        }
-        
-        return span;
-    }
-    
-    [Benchmark]
-    public Span<VeryLargeRecordClass> VeryLargeRecordClassWithSpan()
-    {
-        Span<VeryLargeRecordClass> span = new VeryLargeRecordClass[Count];
-        for (int i = 0; i < Count; i++)
-        {
-            VeryLargeRecordClass test = new(A, B, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString);
             span[i] = test;
         }
         

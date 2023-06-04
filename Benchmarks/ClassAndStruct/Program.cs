@@ -26,7 +26,9 @@ public class Benchmark
     private const int A = 4444;
     private const int B = 8888;
 
-    private const int Count = 100;
+    [Params(100, 1000, 10000, 100000, 1000000)]
+    public int Count { get; set; }
+
 
     #region Struct
     [Benchmark]
@@ -81,61 +83,7 @@ public class Benchmark
         return veryLargeStructArray;
     }
     #endregion
-
-    #region RecordStruct
-    [Benchmark]
-    public SmallRecordStruct[] SmallRecordStruct()
-    {
-        var smallRecordStructArray = new SmallRecordStruct[Count];
-        for (int i = 0; i < Count; i++)
-        {
-            SmallRecordStruct test = new(A, B);
-            smallRecordStructArray[i] = test;
-        }
-        
-        return smallRecordStructArray;
-    }
-
-    [Benchmark]
-    public MediumRecordStruct[] MediumRecordStruct()
-    {
-        var mediumRecordStructArray = new MediumRecordStruct[Count];
-        for (int i = 0; i < Count; i++)
-        {
-            MediumRecordStruct test = new(A, B, _sampleString, _sampleString);
-            mediumRecordStructArray[i] = test;
-        }
-        
-        return mediumRecordStructArray;
-    }
-
-    [Benchmark]
-    public LargeRecordStruct[] LargeRecordStruct()
-    {
-        var largeRecordStructArray = new LargeRecordStruct[Count];
-        for (int i = 0; i < Count; i++)
-        {
-            LargeRecordStruct test = new(A, B, _sampleString, _sampleString, _sampleString, _sampleString);
-            largeRecordStructArray[i] = test;
-        }
-        
-        return largeRecordStructArray;
-    }
     
-    [Benchmark]
-    public VeryLargeRecordStruct[] VeryLargeRecordStructs()
-    {
-        var veryLargeRecordStructList = new VeryLargeRecordStruct[Count];
-        for (int i = 0; i < Count; i++)
-        {
-            VeryLargeRecordStruct test = new(A, B, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString);
-            veryLargeRecordStructList[i] = test;
-        }
-        
-        return veryLargeRecordStructList;
-    }
-    #endregion
-
     #region Class
     [Benchmark]
     public SmallClass[] SmallClass()
@@ -187,60 +135,6 @@ public class Benchmark
         }
         
         return veryLargeClassArray;
-    }
-    #endregion
-    
-    #region RecordClass
-    [Benchmark]
-    public SmallRecordClass[] SmallRecordClass()
-    {
-        var smallRecordClassArray = new SmallRecordClass[Count];
-        for (int i = 0; i < Count; i++)
-        {
-            SmallRecordClass test = new(A, B);
-            smallRecordClassArray[i] = test;
-        }
-        
-        return smallRecordClassArray;
-    }
-
-    [Benchmark]
-    public MediumRecordClass[] MediumRecordClass()
-    {
-        var mediumRecordClassArray = new MediumRecordClass[Count];
-        for (int i = 0; i < Count; i++)
-        {
-            MediumRecordClass test = new(A, B, _sampleString, _sampleString);
-            mediumRecordClassArray[i] = test;
-        }
-        
-        return mediumRecordClassArray;
-    }
-    
-    [Benchmark]
-    public LargeRecordClass[] LargeRecordClass()
-    {
-        var largeRecordClassArray = new LargeRecordClass[Count];
-        for (int i = 0; i < Count; i++)
-        {
-            LargeRecordClass test = new(A, B, _sampleString, _sampleString, _sampleString, _sampleString);
-            largeRecordClassArray[i] = test;
-        }
-        
-        return largeRecordClassArray;
-    }
-    
-    [Benchmark]
-    public VeryLargeRecordClass[] VeryLargeRecordClass()
-    {
-        var veryLargeRecordClassArray = new VeryLargeRecordClass[Count];
-        for (int i = 0; i < Count; i++)
-        {
-            VeryLargeRecordClass test = new(A, B, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString);
-            veryLargeRecordClassArray[i] = test;
-        }
-        
-        return veryLargeRecordClassArray;
     }
     #endregion
 }
