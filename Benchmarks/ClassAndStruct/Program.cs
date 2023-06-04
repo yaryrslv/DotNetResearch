@@ -6,7 +6,6 @@ using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Exporters;
 using BenchmarkDotNet.Exporters.Csv;
 using BenchmarkDotNet.Loggers;
-using BenchmarkDotNet.Reports;
 using BenchmarkDotNet.Running;
 using BenchmarkDotNet.Validators;
 using Data;
@@ -27,7 +26,7 @@ public class Benchmark
     private const int A = Int32.MaxValue;
     private const int B = Int32.MaxValue;
 
-    [Params(1, 10)]
+    [Params(100, 1000, 10000, 100000, 1000000)]
     public int Count { get; set; }
 
 

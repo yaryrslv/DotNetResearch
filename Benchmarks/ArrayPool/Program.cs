@@ -27,7 +27,7 @@ public class Benchmark
     private const int A = Int32.MaxValue;
     private const int B = Int32.MaxValue;
 
-    [Params(1, 10)]
+    [Params(100, 1000, 10000, 100000, 1000000)]
     public int Count { get; set; }
 
     #region ArrayPools
