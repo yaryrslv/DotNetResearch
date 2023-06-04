@@ -23,33 +23,34 @@ BenchmarkRunner.Run<Benchmark>(config);
 [MemoryDiagnoser]
 public class Benchmark
 {
-    private readonly string _sampleString = new('a', 18);
-    private const int A = 4444;
-    private const int B = 8888;
+    private readonly Guid _sampleGuid = Guid.NewGuid();
+    private const int A = Int32.MaxValue;
+    private const int B = Int32.MaxValue;
 
-    private const int Count = 1000000;
+    [Params(1, 10)]
+    public int Count { get; set; }
 
     #region ArrayPools
-    private readonly ArrayPool<SmallStruct> _smallStructArrayPool = ArrayPool<SmallStruct>.Shared;
-    private readonly ArrayPool<MediumStruct> _mediumStructArrayPool = ArrayPool<MediumStruct>.Shared;
-    private readonly ArrayPool<LargeStruct> _largeStructArrayPool = ArrayPool<LargeStruct>.Shared;
-    private readonly ArrayPool<VeryLargeStruct> _veryLargeStructArrayPool = ArrayPool<VeryLargeStruct>.Shared;
+    private readonly ArrayPool<Struct8> _struct8ArrayPool = ArrayPool<Struct8>.Shared;
+    private readonly ArrayPool<Struct48> _struct48ArrayPool = ArrayPool<Struct48>.Shared;
+    private readonly ArrayPool<Struct80> _struct80ArrayPool = ArrayPool<Struct80>.Shared;
+    private readonly ArrayPool<Struct144> _struct144ArrayPool = ArrayPool<Struct144>.Shared;
 
-    private readonly ArrayPool<SmallClass> _smallClassArrayPool = ArrayPool<SmallClass>.Shared;
-    private readonly ArrayPool<MediumClass> _mediumClassArrayPool = ArrayPool<MediumClass>.Shared;
-    private readonly ArrayPool<LargeClass> _largeClassArrayPool = ArrayPool<LargeClass>.Shared;
-    private readonly ArrayPool<VeryLargeClass> _veryLargeClassArrayPool = ArrayPool<VeryLargeClass>.Shared;
+    private readonly ArrayPool<Class8> _class8ArrayPool = ArrayPool<Class8>.Shared;
+    private readonly ArrayPool<Class48> _class48ArrayPool = ArrayPool<Class48>.Shared;
+    private readonly ArrayPool<Class80> _class80ArrayPool = ArrayPool<Class80>.Shared;
+    private readonly ArrayPool<Class144> _class144ArrayPool = ArrayPool<Class144>.Shared;
     
     #endregion
 
     #region Struct
     [Benchmark]
-    public SmallStruct[] SmallStructWithArrayPool()
+    public Struct8[] Struct8WithArrayPool()
     {
-        var rentArray = _smallStructArrayPool.Rent(Count);
+        var rentArray = _struct8ArrayPool.Rent(Count);
         for (int i = 0; i < Count; i++)
         {
-            SmallStruct test = new(A, B);
+            Struct8 test = new(A, B);
             rentArray[i] = test;
         }
 
@@ -57,12 +58,12 @@ public class Benchmark
     }
 
     [Benchmark]
-    public MediumStruct[] MediumStructWithArrayPool()
+    public Struct48[] Struct48WithArrayPool()
     {
-        var rentArray = _mediumStructArrayPool.Rent(Count);
+        var rentArray = _struct48ArrayPool.Rent(Count);
         for (int i = 0; i < Count; i++)
         {
-            MediumStruct test = new(A, B, _sampleString, _sampleString);
+            Struct48 test = new(A, B, _sampleGuid, _sampleGuid);
             rentArray[i] = test;
         }
        
@@ -70,12 +71,12 @@ public class Benchmark
     }
     
     [Benchmark]
-    public LargeStruct[] LargeStructWithArrayPool()
+    public Struct80[] Struct80WithArrayPool()
     {
-        var rentArray = _largeStructArrayPool.Rent(Count);
+        var rentArray = _struct80ArrayPool.Rent(Count);
         for (int i = 0; i < Count; i++)
         {
-            LargeStruct test = new(A, B, _sampleString, _sampleString, _sampleString, _sampleString);
+            Struct80 test = new(A, B, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid);
             rentArray[i] = test;
         }
         
@@ -83,12 +84,12 @@ public class Benchmark
     }
 
     [Benchmark]
-    public VeryLargeStruct[] VeryLargeStructsWithArrayPool()
+    public Struct144[] Struct144WithArrayPool()
     {
-        var rentArray = _veryLargeStructArrayPool.Rent(Count);
+        var rentArray = _struct144ArrayPool.Rent(Count);
         for (int i = 0; i < Count; i++)
         {
-            VeryLargeStruct test = new(A, B, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString);
+            Struct144 test = new(A, B, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid);
             rentArray[i] = test;
         }
         
@@ -98,12 +99,12 @@ public class Benchmark
 
     #region Class
     [Benchmark]
-    public SmallClass[] SmallClassWithArrayPool()
+    public Class8[] Class8WithArrayPool()
     {
-        var rentArray = _smallClassArrayPool.Rent(Count);
+        var rentArray = _class8ArrayPool.Rent(Count);
         for (int i = 0; i < Count; i++)
         {
-            SmallClass test = new(A, B);
+            Class8 test = new(A, B);
             rentArray[i] = test;
         }
         
@@ -111,12 +112,12 @@ public class Benchmark
     }
 
     [Benchmark]
-    public MediumClass[] MediumClassWithArrayPool()
+    public Class48[] Class48WithArrayPool()
     {
-        var rentArray = _mediumClassArrayPool.Rent(Count);
+        var rentArray = _class48ArrayPool.Rent(Count);
         for (int i = 0; i < Count; i++)
         {
-            MediumClass test = new(A, B, _sampleString, _sampleString);
+            Class48 test = new(A, B, _sampleGuid, _sampleGuid);
             rentArray[i] = test;
         }
         
@@ -124,12 +125,12 @@ public class Benchmark
     }
 
     [Benchmark]
-    public LargeClass[] LargeClassWithArrayPool()
+    public Class80[] Class80WithArrayPool()
     {
-        var rentArray = _largeClassArrayPool.Rent(Count);
+        var rentArray = _class80ArrayPool.Rent(Count);
         for (int i = 0; i < Count; i++)
         {
-            LargeClass test = new(A, B, _sampleString, _sampleString, _sampleString, _sampleString);
+            Class80 test = new(A, B, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid);
             rentArray[i] = test;
         }
 
@@ -137,12 +138,12 @@ public class Benchmark
     }
     
     [Benchmark]
-    public VeryLargeClass[] VeryLargeClassWithArrayPool()
+    public Class144[] Class144WithArrayPool()
     {
-        var rentArray = _veryLargeClassArrayPool.Rent(Count);
+        var rentArray = _class144ArrayPool.Rent(Count);
         for (int i = 0; i < Count; i++)
         {
-            VeryLargeClass test = new(A, B, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString);
+            Class144 test = new(A, B, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid);
             rentArray[i] = test;
         }
         

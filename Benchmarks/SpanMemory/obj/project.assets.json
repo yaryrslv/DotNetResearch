@@ -600,6 +600,9 @@
       "Data/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "BenchmarkDotNet": "0.13.5"
+        },
         "compile": {
           "bin/placeholder/Data.dll": {}
         },

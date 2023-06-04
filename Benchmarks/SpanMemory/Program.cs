@@ -22,20 +22,21 @@ BenchmarkRunner.Run<Benchmark>(config);
 [MemoryDiagnoser]
 public class Benchmark
 {
-    private readonly string _sampleString = new('a', 18);
-    private const int A = 4444;
-    private const int B = 8888;
+    private readonly Guid _sampleGuid = Guid.NewGuid();
+    private const int A = Int32.MaxValue;
+    private const int B = Int32.MaxValue;
 
-    private const int Count = 1000000;
+    [Params(1, 10)]
+    public int Count { get; set; }
 
     #region Struct
     [Benchmark]
-    public Span<SmallStruct> SmallStructWithSpan()
+    public Span<Struct8> Struct8WithSpan()
     {
-        Span<SmallStruct> span = new SmallStruct[Count];
+        Span<Struct8> span = new Struct8[Count];
         for (int i = 0; i < Count; i++)
         {
-            SmallStruct test = new(A, B);
+            Struct8 test = new(A, B);
             span[i] = test;
         }
 
@@ -43,12 +44,12 @@ public class Benchmark
     }
 
     [Benchmark]
-    public Span<MediumStruct> MediumStructWithSpan()
+    public Span<Struct48> Struct48WithSpan()
     {
-        Span<MediumStruct> span = new MediumStruct[Count];
+        Span<Struct48> span = new Struct48[Count];
         for (int i = 0; i < Count; i++)
         {
-            MediumStruct test = new(A, B, _sampleString, _sampleString);
+            Struct48 test = new(A, B, _sampleGuid, _sampleGuid);
             span[i] = test;
         }
         
@@ -56,12 +57,12 @@ public class Benchmark
     }
     
     [Benchmark]
-    public Span<LargeStruct> LargeStructWithSpan()
+    public Span<Struct80> Struct80WithSpan()
     {
-        Span<LargeStruct> span = new LargeStruct[Count];
+        Span<Struct80> span = new Struct80[Count];
         for (int i = 0; i < Count; i++)
         {
-            LargeStruct test = new(A, B, _sampleString, _sampleString, _sampleString, _sampleString);
+            Struct80 test = new(A, B, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid);
             span[i] = test;
         }
 
@@ -69,12 +70,12 @@ public class Benchmark
     }
 
     [Benchmark]
-    public Span<VeryLargeStruct> VeryLargeStructsWithSpan()
+    public Span<Struct144> Struct144sWithSpan()
     {
-        Span<VeryLargeStruct> span = new VeryLargeStruct[Count];
+        Span<Struct144> span = new Struct144[Count];
         for (int i = 0; i < Count; i++)
         {
-            VeryLargeStruct test = new(A, B, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString);
+            Struct144 test = new(A, B, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid);
             span[i] = test;
         }
         
@@ -84,12 +85,12 @@ public class Benchmark
 
     #region Class
     [Benchmark]
-    public Span<SmallClass> SmallClassWithSpan()
+    public Span<Class8> Class8WithSpan()
     {
-        Span<SmallClass> span = new SmallClass[Count];
+        Span<Class8> span = new Class8[Count];
         for (int i = 0; i < Count; i++)
         {
-            SmallClass test = new(A, B);
+            Class8 test = new(A, B);
             span[i] = test;
         }
         
@@ -97,12 +98,12 @@ public class Benchmark
     }
 
     [Benchmark]
-    public Span<MediumClass> MediumClassWithSpan()
+    public Span<Class48> Class48WithSpan()
     {
-        Span<MediumClass> span = new MediumClass[Count];
+        Span<Class48> span = new Class48[Count];
         for (int i = 0; i < Count; i++)
         {
-            MediumClass test = new(A, B, _sampleString, _sampleString);
+            Class48 test = new(A, B, _sampleGuid, _sampleGuid);
             span[i] = test;
         }
         
@@ -110,12 +111,12 @@ public class Benchmark
     }
 
     [Benchmark]
-    public Span<LargeClass> LargeClassWithSpan()
+    public Span<Class80> Class80WithSpan()
     {
-        Span<LargeClass> span = new LargeClass[Count];
+        Span<Class80> span = new Class80[Count];
         for (int i = 0; i < Count; i++)
         {
-            LargeClass test = new(A, B, _sampleString, _sampleString, _sampleString, _sampleString);
+            Class80 test = new(A, B, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid);
             span[i] = test;
         }
         
@@ -123,12 +124,12 @@ public class Benchmark
     }
     
     [Benchmark]
-    public Span<VeryLargeClass> VeryLargeClassWithSpan()
+    public Span<Class144> Class144WithSpan()
     {
-        Span<VeryLargeClass> span = new VeryLargeClass[Count];
+        Span<Class144> span = new Class144[Count];
         for (int i = 0; i < Count; i++)
         {
-            VeryLargeClass test = new(A, B, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString);
+            Class144 test = new(A, B, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid);
             span[i] = test;
         }
         

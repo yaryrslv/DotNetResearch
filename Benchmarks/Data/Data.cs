@@ -1,14 +1,18 @@
 ﻿namespace Data;
 
-//Размер в байтах: 8
-public record struct SmallStruct(int A, int B);
-public record struct MediumStruct(int A, int B, string X, string Y);
-public record struct LargeStruct(int A, int B, string X, string Y, string Z, string W);
-public record struct VeryLargeStruct(int A, int B, string X, string Y, string Z, string W, string A1, string B1, string X1, string Y1, string Z1, string W1);
+//8 bytes
+public record struct Struct8(int A, int B);
+//48 bytes
+public record struct Struct48(int A, int B, Guid X, Guid Y);
+//80 bytes
+public record struct Struct80(int A, int B, Guid X, Guid Y, Guid Z, Guid W);
+//144 bytes
+public record struct Struct144(int A, int B, Guid X, Guid Y, Guid Z, Guid W, Guid A1, Guid B1, Guid X1, Guid Y1, Guid Z1, Guid W1);
 
-public class SmallClass
+//8 bytes
+public class Class8
 {
-    public SmallClass (int a, int b)
+    public Class8 (int a, int b)
     {
         A = a;
         B = b;
@@ -17,9 +21,10 @@ public class SmallClass
     public int B { get; set;}
 }
 
-public class MediumClass
+//48 bytes
+public class Class48
 {
-    public MediumClass (int a, int b, string x, string y)
+    public Class48 (int a, int b, Guid x, Guid y)
     {
         A = a;
         B = b;
@@ -28,12 +33,14 @@ public class MediumClass
     }
     public int A { get; set;}
     public int B { get; set;}
-    public string X { get; set;}
-    public string Y { get; set;}
+    public Guid X { get; set;}
+    public Guid Y { get; set;}
 }
-public class LargeClass
+
+//80 bytes
+public class Class80
 {
-    public LargeClass (int a, int b, string x, string y, string z, string w)
+    public Class80 (int a, int b, Guid x, Guid y, Guid z, Guid w)
     {
         A = a;
         B = b;
@@ -44,14 +51,15 @@ public class LargeClass
     }
     public int A { get; set;}
     public int B { get; set;}
-    public string X { get; set;}
-    public string Y { get; set;}
-    public string Z { get; set;}
-    public string W { get; set;}
+    public Guid X { get; set;}
+    public Guid Y { get; set;}
+    public Guid Z { get; set;}
+    public Guid W { get; set;}
 }
-public class VeryLargeClass
+//144 bytes
+public class Class144
 {
-    public VeryLargeClass (int a, int b, string x, string y, string z, string w, string a1, string b1, string x1, string y1, string z1, string w1)
+    public Class144 (int a, int b, Guid x, Guid y, Guid z, Guid w, Guid a1, Guid b1, Guid x1, Guid y1, Guid z1, Guid w1)
     {
         A = a;
         B = b;
@@ -68,14 +76,14 @@ public class VeryLargeClass
     }
     public int A { get; set;}
     public int B { get; set;}
-    public string X { get; set;}
-    public string Y { get; set;}
-    public string Z { get; set;}
-    public string W { get; set;}
-    public string A1 { get; set;}
-    public string B1 { get; set;}
-    public string X1 { get; set;}
-    public string Y1 { get; set;}
-    public string Z1 { get; set;}
-    public string W1 { get; set;}
+    public Guid X { get; set;}
+    public Guid Y { get; set;}
+    public Guid Z { get; set;}
+    public Guid W { get; set;}
+    public Guid A1 { get; set;}
+    public Guid B1 { get; set;}
+    public Guid X1 { get; set;}
+    public Guid Y1 { get; set;}
+    public Guid Z1 { get; set;}
+    public Guid W1 { get; set;}
 }

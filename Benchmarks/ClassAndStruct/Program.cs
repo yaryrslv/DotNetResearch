@@ -6,6 +6,7 @@ using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Exporters;
 using BenchmarkDotNet.Exporters.Csv;
 using BenchmarkDotNet.Loggers;
+using BenchmarkDotNet.Reports;
 using BenchmarkDotNet.Running;
 using BenchmarkDotNet.Validators;
 using Data;
@@ -22,119 +23,119 @@ BenchmarkRunner.Run<Benchmark>(config);
 [MemoryDiagnoser]
 public class Benchmark
 {
-    private readonly string _sampleString = new('a', 18);
-    private const int A = 4444;
-    private const int B = 8888;
+    private readonly Guid _sampleGuid = Guid.NewGuid();
+    private const int A = Int32.MaxValue;
+    private const int B = Int32.MaxValue;
 
-    [Params(100, 1000, 10000, 100000, 1000000)]
+    [Params(1, 10)]
     public int Count { get; set; }
 
 
     #region Struct
     [Benchmark]
-    public SmallStruct[] SmallStruct()
+    public Struct8[] Struct8()
     {
-        var smallStructArray = new SmallStruct[Count];
+        var struct8Array = new Struct8[Count];
         for (int i = 0; i < Count; i++)
         {
-            SmallStruct test = new(A, B);
-            smallStructArray[i] = test;
+            Struct8 test = new(A, B);
+            struct8Array[i] = test;
         }
 
-        return smallStructArray;
+        return struct8Array;
     }
 
     [Benchmark]
-    public MediumStruct[] MediumStruct()
+    public Struct48[] Struct48()
     {
-        var mediumStructArray = new MediumStruct[Count];
+        var struct48Array = new Struct48[Count];
         for (int i = 0; i < Count; i++)
         {
-            MediumStruct test = new(A, B, _sampleString, _sampleString);
-            mediumStructArray[i] = test;
+            Struct48 test = new(A, B, _sampleGuid, _sampleGuid);
+            struct48Array[i] = test;
         }
         
-        return mediumStructArray;
+        return struct48Array;
     }
     
     [Benchmark]
-    public LargeStruct[] LargeStruct()
+    public Struct80[] Struct80()
     {
-        var largeStructArray = new LargeStruct[Count];
+        var struct80Array = new Struct80[Count];
         for (int i = 0; i < Count; i++)
         {
-            LargeStruct test = new(A, B, _sampleString, _sampleString, _sampleString, _sampleString);
-            largeStructArray[i] = test;
+            Struct80 test = new(A, B, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid);
+            struct80Array[i] = test;
         }
         
-        return largeStructArray;
+        return struct80Array;
     }
 
     [Benchmark]
-    public VeryLargeStruct[] VeryLargeStructs()
+    public Struct144[] Struct144S()
     {
-        var veryLargeStructArray = new VeryLargeStruct[Count];
+        var struct144Array = new Struct144[Count];
         for (int i = 0; i < Count; i++)
         {
-            VeryLargeStruct test = new(A, B, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString);
-            veryLargeStructArray[i] = test;
+            Struct144 test = new(A, B, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid);
+            struct144Array[i] = test;
         }
         
-        return veryLargeStructArray;
+        return struct144Array;
     }
     #endregion
     
     #region Class
     [Benchmark]
-    public SmallClass[] SmallClass()
+    public Class8[] Class8()
     {
-        var smallClassArray = new SmallClass[Count];
+        var Class8Array = new Class8[Count];
         for (int i = 0; i < Count; i++)
         {
-            SmallClass test = new(A, B); 
-            smallClassArray[i] = test;
+            Class8 test = new(A, B); 
+            Class8Array[i] = test;
         }
         
-        return smallClassArray;
+        return Class8Array;
     }
 
     [Benchmark]
-    public MediumClass[] MediumClass()
+    public Class48[] Class48()
     {
-        var mediumClassArray = new MediumClass[Count];
+        var Class48Array = new Class48[Count];
         for (int i = 0; i < Count; i++)
         {
-            MediumClass test = new(A, B, _sampleString, _sampleString);
-            mediumClassArray[i] = test;
+            Class48 test = new(A, B, _sampleGuid, _sampleGuid);
+            Class48Array[i] = test;
         }
         
-        return mediumClassArray;
+        return Class48Array;
     }
 
     [Benchmark]
-    public LargeClass[] LargeClass()
+    public Class80[] Class80()
     {
-        var largeClassArray = new LargeClass[Count];
+        var Class80Array = new Class80[Count];
         for (int i = 0; i < Count; i++)
         {
-            LargeClass test = new(A, B, _sampleString, _sampleString, _sampleString, _sampleString);
-            largeClassArray[i] = test;
+            Class80 test = new(A, B, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid);
+            Class80Array[i] = test;
         }
         
-        return largeClassArray;
+        return Class80Array;
     }
     
     [Benchmark]
-    public VeryLargeClass[] VeryLargeClass()
+    public Class144[] Class144()
     {
-        var veryLargeClassArray = new VeryLargeClass[Count];
+        var Class144Array = new Class144[Count];
         for (int i = 0; i < Count; i++)
         {
-            VeryLargeClass test = new(A, B, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString, _sampleString);
-            veryLargeClassArray[i] = test;
+            Class144 test = new(A, B, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid);
+            Class144Array[i] = test;
         }
         
-        return veryLargeClassArray;
+        return Class144Array;
     }
     #endregion
 }
