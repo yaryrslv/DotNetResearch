@@ -1,3 +1,4 @@
+using System;
 using BenchmarkDotNet.Attributes;
 using Data;
 
