@@ -1,4 +1,6 @@
-﻿namespace Data;
+﻿using System;
+
+namespace Data;
 
 //8 bytes
 public record struct Struct8(int A, int B);

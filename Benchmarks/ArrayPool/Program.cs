@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using System;
 using System.Buffers;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Columns;
@@ -24,8 +25,8 @@ BenchmarkRunner.Run<Benchmark>(config);
 public class Benchmark
 {
     private readonly Guid _sampleGuid = Guid.NewGuid();
-    private const int A = Int32.MaxValue;
-    private const int B = Int32.MaxValue;
+    private const int A = int.MaxValue;
+    private const int B = int.MaxValue;
 
     [Params(100, 1000, 10000, 100000, 1000000)]
     public int Count { get; set; }
@@ -48,7 +49,7 @@ public class Benchmark
     public Struct8[] Struct8WithArrayPool()
     {
         var rentArray = _struct8ArrayPool.Rent(Count);
-        for (int i = 0; i < Count; i++)
+        for (var i = 0; i < Count; i++)
         {
             Struct8 test = new(A, B);
             rentArray[i] = test;
@@ -61,7 +62,7 @@ public class Benchmark
     public Struct48[] Struct48WithArrayPool()
     {
         var rentArray = _struct48ArrayPool.Rent(Count);
-        for (int i = 0; i < Count; i++)
+        for (var i = 0; i < Count; i++)
         {
             Struct48 test = new(A, B, _sampleGuid, _sampleGuid);
             rentArray[i] = test;
@@ -74,7 +75,7 @@ public class Benchmark
     public Struct80[] Struct80WithArrayPool()
     {
         var rentArray = _struct80ArrayPool.Rent(Count);
-        for (int i = 0; i < Count; i++)
+        for (var i = 0; i < Count; i++)
         {
             Struct80 test = new(A, B, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid);
             rentArray[i] = test;
@@ -87,7 +88,7 @@ public class Benchmark
     public Struct144[] Struct144WithArrayPool()
     {
         var rentArray = _struct144ArrayPool.Rent(Count);
-        for (int i = 0; i < Count; i++)
+        for (var i = 0; i < Count; i++)
         {
             Struct144 test = new(A, B, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid);
             rentArray[i] = test;
@@ -102,7 +103,7 @@ public class Benchmark
     public Class8[] Class8WithArrayPool()
     {
         var rentArray = _class8ArrayPool.Rent(Count);
-        for (int i = 0; i < Count; i++)
+        for (var i = 0; i < Count; i++)
         {
             Class8 test = new(A, B);
             rentArray[i] = test;
@@ -115,7 +116,7 @@ public class Benchmark
     public Class48[] Class48WithArrayPool()
     {
         var rentArray = _class48ArrayPool.Rent(Count);
-        for (int i = 0; i < Count; i++)
+        for (var i = 0; i < Count; i++)
         {
             Class48 test = new(A, B, _sampleGuid, _sampleGuid);
             rentArray[i] = test;
@@ -128,7 +129,7 @@ public class Benchmark
     public Class80[] Class80WithArrayPool()
     {
         var rentArray = _class80ArrayPool.Rent(Count);
-        for (int i = 0; i < Count; i++)
+        for (var i = 0; i < Count; i++)
         {
             Class80 test = new(A, B, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid);
             rentArray[i] = test;
@@ -141,7 +142,7 @@ public class Benchmark
     public Class144[] Class144WithArrayPool()
     {
         var rentArray = _class144ArrayPool.Rent(Count);
-        for (int i = 0; i < Count; i++)
+        for (var i = 0; i < Count; i++)
         {
             Class144 test = new(A, B, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid, _sampleGuid);
             rentArray[i] = test;
