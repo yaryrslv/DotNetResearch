@@ -1,6 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-using BenchmarkDotNet.Columns;
+﻿using BenchmarkDotNet.Columns;
 using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Exporters;
 using BenchmarkDotNet.Exporters.Csv;
