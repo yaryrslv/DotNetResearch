@@ -55,7 +55,7 @@ public class WriteBenchmark
     }
 
     [Benchmark]
-    public Struct144[] Struct144S()
+    public Struct144[] Struct144()
     {
         var struct144Array = new Struct144[Count];
         for (var i = 0; i < Count; i++)

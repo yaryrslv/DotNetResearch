@@ -11,7 +11,7 @@ var config = new ManualConfig()
     .WithOptions(ConfigOptions.DisableOptimizationsValidator)
     .AddValidator(JitOptimizationsValidator.DontFailOnError)
     .AddLogger(ConsoleLogger.Default)
-    .AddColumnProvider(DefaultColumnProviders.Instance).
-    AddExporter(RPlotExporter.Default, CsvExporter.Default);
+    .AddColumnProvider(DefaultColumnProviders.Instance)
+    .AddExporter(RPlotExporter.Default, CsvExporter.Default, MarkdownExporter.GitHub, HtmlExporter.Default);
 
 BenchmarkRunner.Run<WriteBenchmark>(config);
